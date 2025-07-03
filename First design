@@ -1,1 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="solo.css">
+    <title>SAMIR - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap"
+        rel="stylesheet">
+        <style>
+            :root {
+            --primary: #1B3C53;
+            --secondary: #2c5c7f;
+            --accent: #3d8fc2;
+            --light: #f0f7ff;
+            --dark: #0d1f2d;
+            --text: #e6f1ff;
+            --success: #4CAF50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--dark);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .navigation {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--light);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .menu-toggle {
+            display:none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--light);
+        }
+        
+        /* Main Content Styles */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        
+        .container {
+            background: linear-gradient(135deg, rgba(27, 60, 83, 0.8), rgba(13, 31, 45, 0.9));
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .container h2 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            text-align: center;
+        }
+        
+        .container p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .about-box {
+            background: linear-gradient(135deg, rgba(13, 31, 45, 0.9), rgba(27, 60, 83, 0.8));
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .about-text {
+            flex: 1;
+            padding: 2rem;
+        }
+        
+        .about-text h2 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+        
+        .about-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .about-image img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 50%;
+            border: 5px solid var(--accent);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            aspect-ratio: 1/1;
+            object-fit: cover;
+        }
+        
+        /* Footer Styles */
+        footer {
+            background-color: var(--dark);
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .social {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .social a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            background-color: rgba(61, 143, 194, 0.2);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .social a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(61, 143, 194, 0.4);
+        }
+        
+        .copyright {
+            margin-top: 1.5rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-image img {
+                max-width: 300px;
+            }
+            
+            .container {
+                padding: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                background-color: var(--dark);
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                gap: 1.5rem;
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: clip-path 0.4s ease-in-out;
+            }
+            
+            .nav-links.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+            
+            .container h2 {
+                font-size: 1.8rem;
+            }
+            
+            .social a {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            main {
+                margin: 1.5rem auto;
+            }
+            
+            .container {
+                padding: 1.5rem;
+            }
+            
+            .container h2 {
+                font-size: 1.6rem;
+            }
+            
+            .container p {
+                font-size: 1rem;
+            }
+            
+            .about-text {
+                padding: 1.5rem;
+            }
+            
+            .about-image {
+                padding: 1.5rem;
+            }
+            
+            .about-image img {
+                max-width: 250px;
+            }
+            
+            .social {
+                gap: 1rem;
+            }
+            
+            .social a {
+                padding: 0.5rem 1rem;
+            }
+        }
+        </style>
+
+</head>
+
+<body>
+    <header>
+        <div class="navigation">
+            <nav>
+                <a href="#" class="logo">SOLO EXPERTISE</a>
+                <div class="menu-toggle" id="menuToggle">☰</div>
+                <div class="nav-links" id="navLinks">
+                    <a href="#">Home</a>
+                    <a href="#">About</a>
+                    <a href="#">Services</a>
+                    <a href="#">Projects</a>
+                    <a href="#">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>Why Choose Me?</h2>
+            <p>With a passion for creating innovative digital solutions, I bring expertise in modern web technologies
+                and a commitment to excellence. My approach combines technical skill with creative problem-solving to
+                deliver outstanding results.</p>
+            <p>I specialize in responsive design, performance optimization, and user-centered development. Whether you
+                need a dynamic web application or a sleek portfolio site, I can transform your vision into reality with
+                clean, efficient code.</p>
+            <p>My dedication to continuous learning ensures I stay at the forefront of industry trends, bringing you the
+                latest and most effective solutions for your digital presence.</p>
+        </div>
+
+        <div class="about-box">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Me</h2>
+                    <p>I'm a passionate web developer with expertise in creating modern, responsive websites and
+                        applications. With a background in computer science and years of industry experience, I bring
+                        both technical knowledge and creative problem-solving to every project.</p>
+                    <p>My approach focuses on clean code, intuitive user experiences, and optimized performance. I stay
+                        current with the latest web technologies and best practices to ensure your digital presence
+                        stands out in today's competitive landscape.</p>
+                    <p>When I'm not coding, you'll find me exploring new technologies, contributing to open-source
+                        projects, or hiking in the mountains to recharge my creative energy.</p>
+                </div>
+                <div class="about-image">
+                    <img src="solo.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="social">
+            <a href="https://www.facebook.com/samiraliking07/">
+                <span>Facebook</span>
+            </a>
+            <a href="https://github.com/Samir-Ali88">
+                <span>GitHub</span>
+            </a>
+            <a href="https://www.linkedin.com/in/imam-samir-ali/">
+                <span>LinkedIn</span>
+            </a>
+        </div>
+        <p class="copyright">© 2025 Samir Ali. All rights reserved.</p>
+    </footer>
+
+   
+</body>
+
+</html>
